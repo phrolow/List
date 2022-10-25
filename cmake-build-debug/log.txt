@@ -1,0 +1,428 @@
+queue newQueue_(const char*, const char*, size_t) at Y:/gthb/List/queue.cpp(22)
+Queue[0000002d2fbffa30] (ok) at int main(int, char**) at Y:/gthb/List/main.cpp(6) {
+	size = 4
+	data[00000187c7c95e30] {
+		[0] = 0 (POISON)
+		[1] = 0 (POISON)
+		[2] = 0 (POISON)
+		[3] = 0 (POISON)
+	}
+}
+void QueueDtor(queue*) at Y:/gthb/List/queue.cpp(28)
+Queue[0000002d2fbffa70] (ok) at int main(int, char**) at Y:/gthb/List/main.cpp(6) {
+	size = 4
+	data[00000187c7c95e30] {
+		[0] = 0 (POISON)
+		[1] = 0 (POISON)
+		[2] = 0 (POISON)
+		[3] = 0 (POISON)
+	}
+}
+(OK)
+
+void QueueDtor(queue*) at Y:/gthb/List/queue.cpp(37)
+Queue[0000002d2fbffa70] (ok) at int main(int, char**) at Y:/gthb/List/main.cpp(6) {
+	size = 0
+	data[00000187c7c95e30] {
+	}
+}
+queue newQueue_(const char*, const char*, size_t) at Y:/gthb/List/queue.cpp(22)
+Queue[00000021b2dffa50] (ok) at int main(int, char**) at Y:/gthb/List/main.cpp(7) {
+	size = 4
+	data[000001b6216a5e30] {
+		[0] = 0 (POISON)
+		[1] = 0 (POISON)
+		[2] = 0 (POISON)
+		[3] = 0 (POISON)
+	}
+}
+void add(queue*, elem_t) at Y:/gthb/List/queueopers.cpp(4)
+Queue[00000021b2dffa90] (ok) at int main(int, char**) at Y:/gthb/List/main.cpp(7) {
+	size = 4
+	data[000001b6216a5e30] {
+		[0] = 0 (POISON)
+		[1] = 0 (POISON)
+		[2] = 0 (POISON)
+		[3] = 0 (POISON)
+	}
+}
+(OK)
+
+void add(queue*, elem_t) at Y:/gthb/List/queueopers.cpp(14)
+Queue[00000021b2dffa90] (ok) at int main(int, char**) at Y:/gthb/List/main.cpp(7) {
+	size = 4
+	data[000001b6216a5e30] {
+		[0] = 0 (POISON)
+		[1] = 65
+		[2] = 0 (POISON)
+		[3] = 0 (POISON)
+	}
+}
+(OK)
+
+void QueueDtor(queue*) at Y:/gthb/List/queue.cpp(28)
+Queue[00000021b2dffa90] (ok) at int main(int, char**) at Y:/gthb/List/main.cpp(7) {
+	size = 4
+	data[000001b6216a5e30] {
+		[0] = 0 (POISON)
+		[1] = 65
+		[2] = 0 (POISON)
+		[3] = 0 (POISON)
+	}
+}
+(OK)
+
+void QueueDtor(queue*) at Y:/gthb/List/queue.cpp(37)
+Queue[00000021b2dffa90] (ok) at int main(int, char**) at Y:/gthb/List/main.cpp(7) {
+	size = 0
+	data[000001b6216a5e30] {
+	}
+}
+queue newQueue_(const char*, const char*, size_t) at Y:/gthb/List/queue.cpp(22)
+Queue[00000052445ff6c0] (ok) at int main(int, char**) at Y:/gthb/List/main.cpp(6) {
+	size = 4
+	data[000002109df35e30] {
+		[0] = 0 (POISON)
+		[1] = 0 (POISON)
+		[2] = 0 (POISON)
+		[3] = 0 (POISON)
+	}
+}
+void add(queue*, elem_t) at Y:/gthb/List/queueopers.cpp(4)
+Queue[00000052445ff700] (ok) at int main(int, char**) at Y:/gthb/List/main.cpp(6) {
+	size = 4
+	data[000002109df35e30] {
+		[0] = 0 (POISON)
+		[1] = 0 (POISON)
+		[2] = 0 (POISON)
+		[3] = 0 (POISON)
+	}
+}
+(OK)
+
+void add(queue*, elem_t) at Y:/gthb/List/queueopers.cpp(14)
+Queue[00000052445ff700] (ok) at int main(int, char**) at Y:/gthb/List/main.cpp(6) {
+	size = 4
+	data[000002109df35e30] {
+		[0] = 0 (POISON)
+		[1] = 65
+		[2] = 0 (POISON)
+		[3] = 0 (POISON)
+	}
+}
+(OK)
+
+void add(queue*, elem_t) at Y:/gthb/List/queueopers.cpp(4)
+Queue[00000052445ff700] (ok) at int main(int, char**) at Y:/gthb/List/main.cpp(6) {
+	size = 4
+	data[000002109df35e30] {
+		[0] = 0 (POISON)
+		[1] = 65
+		[2] = 0 (POISON)
+		[3] = 0 (POISON)
+	}
+}
+(OK)
+
+void add(queue*, elem_t) at Y:/gthb/List/queueopers.cpp(14)
+Queue[00000052445ff700] (ok) at int main(int, char**) at Y:/gthb/List/main.cpp(6) {
+	size = 4
+	data[000002109df35e30] {
+		[0] = 0 (POISON)
+		[1] = 65
+		[2] = 65
+		[3] = 0 (POISON)
+	}
+}
+(OK)
+
+void add(queue*, elem_t) at Y:/gthb/List/queueopers.cpp(4)
+Queue[00000052445ff700] (ok) at int main(int, char**) at Y:/gthb/List/main.cpp(6) {
+	size = 4
+	data[000002109df35e30] {
+		[0] = 0 (POISON)
+		[1] = 65
+		[2] = 65
+		[3] = 0 (POISON)
+	}
+}
+(OK)
+
+void add(queue*, elem_t) at Y:/gthb/List/queueopers.cpp(14)
+Queue[00000052445ff700] (ok) at int main(int, char**) at Y:/gthb/List/main.cpp(6) {
+	size = 4
+	data[000002109df35e30] {
+		[0] = 0 (POISON)
+		[1] = 65
+		[2] = 65
+		[3] = 65
+	}
+}
+(OK)
+
+elem_t get(queue*) at Y:/gthb/List/queueopers.cpp(18)
+Queue[00000052445ff700] (ok) at int main(int, char**) at Y:/gthb/List/main.cpp(6) {
+	size = 4
+	data[000002109df35e30] {
+		[0] = 0 (POISON)
+		[1] = 65
+		[2] = 65
+		[3] = 65
+	}
+}
+(OK)
+
+elem_t get(queue*) at Y:/gthb/List/queueopers.cpp(25)
+Queue[00000052445ff700] (ok) at int main(int, char**) at Y:/gthb/List/main.cpp(6) {
+	size = 4
+	data[000002109df35e30] {
+		[0] = 0 (POISON)
+		[1] = 0 (POISON)
+		[2] = 65
+		[3] = 65
+	}
+}
+(OK)
+
+void QueueDtor(queue*) at Y:/gthb/List/queue.cpp(28)
+Queue[00000052445ff700] (ok) at int main(int, char**) at Y:/gthb/List/main.cpp(6) {
+	size = 4
+	data[000002109df35e30] {
+		[0] = 0 (POISON)
+		[1] = 0 (POISON)
+		[2] = 65
+		[3] = 65
+	}
+}
+(OK)
+
+void QueueDtor(queue*) at Y:/gthb/List/queue.cpp(37)
+Queue[00000052445ff700] (ok) at int main(int, char**) at Y:/gthb/List/main.cpp(6) {
+	size = 0
+	data[000002109df35e30] {
+	}
+}
+queue newQueue_(const char*, const char*, size_t) at Y:/gthb/List/queue.cpp(22)
+Queue[000000456efff930] (ok) at int main(int, char**) at Y:/gthb/List/main.cpp(6) {
+	size = 4
+	data[000001ddbd135e30] {
+		[0] = 0 (POISON)
+		[1] = 0 (POISON)
+		[2] = 0 (POISON)
+		[3] = 0 (POISON)
+	}
+}
+void add(queue*, elem_t) at Y:/gthb/List/queueopers.cpp(4)
+Queue[000000456efff970] (ok) at int main(int, char**) at Y:/gthb/List/main.cpp(6) {
+	size = 4
+	data[000001ddbd135e30] {
+		[0] = 0 (POISON)
+		[1] = 0 (POISON)
+		[2] = 0 (POISON)
+		[3] = 0 (POISON)
+	}
+}
+(OK)
+
+void add(queue*, elem_t) at Y:/gthb/List/queueopers.cpp(14)
+Queue[000000456efff970] (ok) at int main(int, char**) at Y:/gthb/List/main.cpp(6) {
+	size = 4
+	data[000001ddbd135e30] {
+		[0] = 0 (POISON)
+		[1] = 65
+		[2] = 0 (POISON)
+		[3] = 0 (POISON)
+	}
+}
+(OK)
+
+void add(queue*, elem_t) at Y:/gthb/List/queueopers.cpp(4)
+Queue[000000456efff970] (ok) at int main(int, char**) at Y:/gthb/List/main.cpp(6) {
+	size = 4
+	data[000001ddbd135e30] {
+		[0] = 0 (POISON)
+		[1] = 65
+		[2] = 0 (POISON)
+		[3] = 0 (POISON)
+	}
+}
+(OK)
+
+void add(queue*, elem_t) at Y:/gthb/List/queueopers.cpp(14)
+Queue[000000456efff970] (ok) at int main(int, char**) at Y:/gthb/List/main.cpp(6) {
+	size = 4
+	data[000001ddbd135e30] {
+		[0] = 0 (POISON)
+		[1] = 65
+		[2] = 65
+		[3] = 0 (POISON)
+	}
+}
+(OK)
+
+void add(queue*, elem_t) at Y:/gthb/List/queueopers.cpp(4)
+Queue[000000456efff970] (ok) at int main(int, char**) at Y:/gthb/List/main.cpp(6) {
+	size = 4
+	data[000001ddbd135e30] {
+		[0] = 0 (POISON)
+		[1] = 65
+		[2] = 65
+		[3] = 0 (POISON)
+	}
+}
+(OK)
+
+void add(queue*, elem_t) at Y:/gthb/List/queueopers.cpp(14)
+Queue[000000456efff970] (ok) at int main(int, char**) at Y:/gthb/List/main.cpp(6) {
+	size = 4
+	data[000001ddbd135e30] {
+		[0] = 0 (POISON)
+		[1] = 65
+		[2] = 65
+		[3] = 65
+	}
+}
+(OK)
+
+void add(queue*, elem_t) at Y:/gthb/List/queueopers.cpp(4)
+Queue[000000456efff970] (ok) at int main(int, char**) at Y:/gthb/List/main.cpp(6) {
+	size = 4
+	data[000001ddbd135e30] {
+		[0] = 0 (POISON)
+		[1] = 65
+		[2] = 65
+		[3] = 65
+	}
+}
+(OK)
+
+void resize(queue*, size_t) at Y:/gthb/List/queueopers.cpp(29)
+Queue[000000456efff970] (ok) at int main(int, char**) at Y:/gthb/List/main.cpp(6) {
+	size = 4
+	data[000001ddbd135e30] {
+		[0] = 0 (POISON)
+		[1] = 65
+		[2] = 65
+		[3] = 65
+	}
+}
+(OK)
+
+void resize(queue*, size_t) at Y:/gthb/List/queueopers.cpp(54)
+Queue[000000456efff970] (ok) at int main(int, char**) at Y:/gthb/List/main.cpp(6) {
+	size = 8
+	data[000001ddbd135e30] {
+		[0] = 0 (POISON)
+		[1] = 65
+		[2] = 65
+		[3] = 65
+		[4] = 0 (POISON)
+		[5] = 0 (POISON)
+		[6] = 0 (POISON)
+		[7] = 0 (POISON)
+	}
+}
+(OK)
+
+void add(queue*, elem_t) at Y:/gthb/List/queueopers.cpp(14)
+Queue[000000456efff970] (ok) at int main(int, char**) at Y:/gthb/List/main.cpp(6) {
+	size = 8
+	data[000001ddbd135e30] {
+		[0] = 0 (POISON)
+		[1] = 65
+		[2] = 65
+		[3] = 65
+		[4] = 65
+		[5] = 0 (POISON)
+		[6] = 0 (POISON)
+		[7] = 0 (POISON)
+	}
+}
+(OK)
+
+void add(queue*, elem_t) at Y:/gthb/List/queueopers.cpp(4)
+Queue[000000456efff970] (ok) at int main(int, char**) at Y:/gthb/List/main.cpp(6) {
+	size = 8
+	data[000001ddbd135e30] {
+		[0] = 0 (POISON)
+		[1] = 65
+		[2] = 65
+		[3] = 65
+		[4] = 65
+		[5] = 0 (POISON)
+		[6] = 0 (POISON)
+		[7] = 0 (POISON)
+	}
+}
+(OK)
+
+void add(queue*, elem_t) at Y:/gthb/List/queueopers.cpp(14)
+Queue[000000456efff970] (ok) at int main(int, char**) at Y:/gthb/List/main.cpp(6) {
+	size = 8
+	data[000001ddbd135e30] {
+		[0] = 0 (POISON)
+		[1] = 65
+		[2] = 65
+		[3] = 65
+		[4] = 65
+		[5] = 65
+		[6] = 0 (POISON)
+		[7] = 0 (POISON)
+	}
+}
+(OK)
+
+elem_t get(queue*) at Y:/gthb/List/queueopers.cpp(18)
+Queue[000000456efff970] (ok) at int main(int, char**) at Y:/gthb/List/main.cpp(6) {
+	size = 8
+	data[000001ddbd135e30] {
+		[0] = 0 (POISON)
+		[1] = 65
+		[2] = 65
+		[3] = 65
+		[4] = 65
+		[5] = 65
+		[6] = 0 (POISON)
+		[7] = 0 (POISON)
+	}
+}
+(OK)
+
+elem_t get(queue*) at Y:/gthb/List/queueopers.cpp(25)
+Queue[000000456efff970] (ok) at int main(int, char**) at Y:/gthb/List/main.cpp(6) {
+	size = 8
+	data[000001ddbd135e30] {
+		[0] = 0 (POISON)
+		[1] = 0 (POISON)
+		[2] = 65
+		[3] = 65
+		[4] = 65
+		[5] = 65
+		[6] = 0 (POISON)
+		[7] = 0 (POISON)
+	}
+}
+(OK)
+
+void QueueDtor(queue*) at Y:/gthb/List/queue.cpp(28)
+Queue[000000456efff970] (ok) at int main(int, char**) at Y:/gthb/List/main.cpp(6) {
+	size = 8
+	data[000001ddbd135e30] {
+		[0] = 0 (POISON)
+		[1] = 0 (POISON)
+		[2] = 65
+		[3] = 65
+		[4] = 65
+		[5] = 65
+		[6] = 0 (POISON)
+		[7] = 0 (POISON)
+	}
+}
+(OK)
+
+void QueueDtor(queue*) at Y:/gthb/List/queue.cpp(37)
+Queue[000000456efff970] (ok) at int main(int, char**) at Y:/gthb/List/main.cpp(6) {
+	size = 0
+	data[000001ddbd135e30] {
+	}
+}

@@ -1,0 +1,3 @@
+Y:/gthb/List/cmake-build-debug/CMakeFiles/list.dir
+Y:/gthb/List/cmake-build-debug/CMakeFiles/edit_cache.dir
+Y:/gthb/List/cmake-build-debug/CMakeFiles/rebuild_cache.dir
