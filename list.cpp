@@ -1,13 +1,16 @@
 #include "list.h"
 
 list newList_(const char* func, const char* file, size_t line) {
+    int i = 0;
+
     listinfo info = { NULL, NULL, 0 };
-    list list = { NULL, 0, 0, 0, info };
+    list list = { NULL, NULL, NULL, 0, 0, 0, info };
 
     list.size = DEFAULTSIZE;
+
     list.data = (elem_t*)calloc(list.size, sizeof(elem_t));
-    list.h = 1;
-    list.t = 1;
+    list.next = (int*)calloc(list.size, sizeof(int));
+    list.prev = (int*)calloc(list.size, sizeof(int));
 
     info.func = func;
     info.file = file;
@@ -15,9 +18,7 @@ list newList_(const char* func, const char* file, size_t line) {
 
     list.info = info;
 
-    for(size_t i = 0; i < DEFAULTSIZE; i++) {
-        list.data[i] = POISON;
-    }
+    ListInit(list);
 
     ListDump(&list);
 
@@ -27,15 +28,17 @@ list newList_(const char* func, const char* file, size_t line) {
 void ListDtor(list *q) {
     ASSERT_OK(q);
 
-    for(size_t i = 0; i < q->size; i++)
+    for(int i = 0; i < q->size; i++)
         q->data[i] = POISON;
 
     q->size = 0;
-    q->h = 0;
-    q->t = 0;
+    q->Head = 0;
+    q->Tail = 0;
 
     ListDump(q);
     free(q->data);
+//    free(q->getnext);
+//    free(q->getprev);
 
     return;
 }
