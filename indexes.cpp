@@ -1,6 +1,11 @@
 #include "list.h"
 
 int physindex(list *list, int logindex) {
+    ASSERT_OK(list);
+
+    if(list->happy)
+        return logindex + gethead(list);
+
     int pi = 0;
 
     for(int i = 0; i < logindex; i++) {

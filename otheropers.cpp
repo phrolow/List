@@ -72,3 +72,51 @@ void ListInit(list *list) {
 
     RETURN;
 }
+
+void resize(list *q, size_t newsize) {
+    ASSERT_OK(q);
+
+    elem_t *newdata = NULL;
+    int i = 0,
+        next = 0,
+        oldsize = 0;
+
+    newdata = (elem_t*)calloc(newsize, sizeof(elem_t));
+
+    newdata[0] = POISON;
+
+    do {
+        next = q->next[next];
+        newdata[++i] = q->data[next];
+    } while(q->next[next]);
+
+    oldsize = i;
+
+    q->next = (int*)realloc(q->next, q->size * sizeof(int));
+    q->prev = (int*)realloc(q->prev, q->size * sizeof(int));
+
+    q->Head = 1;
+
+    for(i = 1; i < oldsize; i++) {
+        q->next[i] = i + 1;
+        q->prev[i] = i - 1;
+    }
+
+    q->next[i] = 0;
+    q->Tail = i;
+    q->free = oldsize;
+
+    for(i = oldsize; i < newsize; i++) {
+        newdata[i] = POISON;
+        q->next[i] = i + 1;
+        q->prev[i] = -1;
+    }
+
+    q->next[i] = 0;
+
+    q->size = newsize;
+    q->happy = 1;
+    q->data = newdata;
+
+    RETURN;
+}
