@@ -1,0 +1,64 @@
+digraph structs {
+	node [color=black, shape=box, style="filled"];
+	rankdir=LR;
+	head [fillcolor="#FFDAB9",     label="Head = 7"];
+	tail  [fillcolor="#FFDAB9",     label="Tail = 6"];
+	free  [fillcolor="#FFDAB9",     label="free = 8"];
+	sorted [fillcolor="#FFC0CB",    label="happy = 0"];
+	size   [fillcolor="#FFC0CB",    label="size = 16"];
+	node [color=black, shape=record, style="filled"];
+
+	edge [style=invis, constraint=true];
+	node0 [fillcolor="#4682B4",label=" 0 | { <p> 6 | 0 | <n> 7}"];
+	node1 [fillcolor="#8FBC8F",label=" 1 | { <p> 7 | 65 | <n> 2}"];
+	node1->node0;
+	node2 [fillcolor="#8FBC8F",label=" 2 | { <p> 1 | 71 | <n> 3}"];
+	node2->node1;
+	node3 [fillcolor="#8FBC8F",label=" 3 | { <p> 2 | 66 | <n> 4}"];
+	node3->node2;
+	node4 [fillcolor="#8FBC8F",label=" 4 | { <p> 3 | 67 | <n> 5}"];
+	node4->node3;
+	node5 [fillcolor="#8FBC8F",label=" 5 | { <p> 4 | 68 | <n> 6}"];
+	node5->node4;
+	node6 [fillcolor="#8FBC8F",label=" 6 | { <p> 5 | 69 | <n> 0}"];
+	node6->node5;
+	node7 [fillcolor="#8FBC8F",label=" 7 | { <p> 0 | 71 | <n> 1}"];
+	node7->node6;
+	node8 [fillcolor="#808000",label=" 8 | { <p> -1 | 0 | <n> 9}"];
+	node8->node7;
+	node9 [fillcolor="#808000",label=" 9 | { <p> -1 | 0 | <n> 10}"];
+	node9->node8;
+	node10 [fillcolor="#808000",label=" 10 | { <p> -1 | 0 | <n> 11}"];
+	node10->node9;
+	node11 [fillcolor="#808000",label=" 11 | { <p> -1 | 0 | <n> 12}"];
+	node11->node10;
+	node12 [fillcolor="#808000",label=" 12 | { <p> -1 | 0 | <n> 13}"];
+	node12->node11;
+	node13 [fillcolor="#808000",label=" 13 | { <p> -1 | 0 | <n> 14}"];
+	node13->node12;
+	node14 [fillcolor="#808000",label=" 14 | { <p> -1 | 0 | <n> 15}"];
+	node14->node13;
+	node15 [fillcolor="#808000",label=" 15 | { <p> -1 | 0 | <n> 0}"];
+	node15->node14;
+	edge [style=solid, constraint=false];
+	node0->node7
+	node1->node2
+	node2->node3
+	node3->node4
+	node4->node5
+	node5->node6
+	node6->node0
+	node7->node1
+	node8->node9
+	node9->node10
+	node10->node11
+	node11->node12
+	node12->node13
+	node13->node14
+	node14->node15
+	node15->node0
+	edge [style=bold, constraint=false];
+	head->node7;
+	tail->node6;
+	free->node8;
+}

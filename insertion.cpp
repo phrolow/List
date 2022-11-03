@@ -16,6 +16,8 @@ void ListHeadInsert(list *list, elem_t a) {
 
     list->Head = free;
 
+    list->happy = 0;
+
     RETURN;
 }
 
@@ -63,7 +65,8 @@ void ListPhInsertAfter(list *list, elem_t a, int physindex) {
     list->next[free] = next;
     list->prev[next] = free;
 
-    list->happy = 0;
+    if(gettail(list) != free)
+        list->happy = 0;
 
     RETURN;
 }

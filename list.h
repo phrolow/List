@@ -20,7 +20,7 @@
 #define CHECK(cond, err) (cond) ? 0 : (err)
 
 #define RETURN                                                                  \
-    ASSERT_OK(q);                                                               \
+    ASSERT_OK(list);                                                               \
                                                                                 \
     return
 
@@ -29,6 +29,7 @@
 #define ListCheck(list) ListCheck_(list, _LOCATION_)
 
 typedef char elem_t;
+typedef int err_t;
 typedef struct ListInfo {
     const char  *func,
                 *file;
@@ -58,13 +59,19 @@ const char* const   HTMLPATH = "log.html";
 const char* const   PNGPATH = "graph.png";
 const char* const   DOT = "C:\\Users\\Russi\\Downloads\\windows_10_msbuild_Release_graphviz-6.0.2-win32\\Graphviz\\bin\\dot.exe";
 
+const char* const   COLOR_NODE = "#8FBC8F";
+const char* const   COLOR_FREE_NODE = "#808000";
+const char* const   COLOR_ZERO_NODE = "#4682B4";
+const char* const   COLOR_HTF = "#FFDAB9";
+const char* const   COLOR_PARAM = "#FFC0CB";
+
 extern int NGDUMP;
 
 void add(list *q, elem_t a);
 
 elem_t get(list *q);
 
-void resize(list *t, size_t newSize);
+void resize(list *list, size_t newSize);
 
 void del(list *q, int num);
 
@@ -72,13 +79,13 @@ void insert(list *q, elem_t a, int num);
 
 list newList_(const char* func, const char* file, size_t line);
 
-void ListDtor(list *q);
+void ListDtor(list *list);
 
 void ListDump_(struct List *list, const char *func, const char *file, size_t line);
 
 void ListGraphDump(list *list);
 
-int ListCheck_(struct List *list, const char* func, const char* file, size_t line);
+err_t ListCheck_(struct List *list, const char* func, const char* file, size_t line);
 
 int physindex(list *list, int logindex);
 

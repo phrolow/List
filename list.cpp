@@ -18,27 +18,27 @@ list newList_(const char* func, const char* file, size_t line) {
 
     list.info = info;
 
-    ListInit(list);
+    ListInit(&list);
 
     ListDump(&list);
 
     return list;
 }
 
-void ListDtor(list *q) {
-    ASSERT_OK(q);
+void ListDtor(list *list) {
+    ASSERT_OK(list);
 
-    for(int i = 0; i < q->size; i++)
-        q->data[i] = POISON;
+    for(int i = 0; i < list->size; i++)
+        list->data[i] = POISON;
 
-    q->size = 0;
-    q->Head = 0;
-    q->Tail = 0;
+    list->size = 0;
+    list->Head = 0;
+    list->Tail = 0;
 
-    ListDump(q);
-    free(q->data);
-//    free(q->getnext);
-//    free(q->getprev);
+    ListDump(list);
+    free(list->data);
+//    free(list->getnext);
+//    free(list->getprev);
 
     return;
 }

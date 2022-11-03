@@ -56,7 +56,7 @@ void ListInit(list *list) {
 
     list->data[0] = POISON;
     list->Head = 1;
-    list->Tail = 1;
+    list->Tail = 0;
 
     for(i = 1; i < list->size; i++) {
         list->data[i] = POISON;
@@ -64,17 +64,17 @@ void ListInit(list *list) {
         list->prev[i] = -1;
     }
 
-    list->next[i] = 0;
+    list->next[i - 1] = 0;
 
-    list->free = 0;
+    list->free = 1;
 
     list->happy = 1;
 
     RETURN;
 }
 
-void resize(list *q, size_t newsize) {
-    ASSERT_OK(q);
+void resize(list *list, size_t newsize) {
+    ASSERT_OK(list);
 
     elem_t *newdata = NULL;
     int i = 0,
@@ -86,37 +86,37 @@ void resize(list *q, size_t newsize) {
     newdata[0] = POISON;
 
     do {
-        next = q->next[next];
-        newdata[++i] = q->data[next];
-    } while(q->next[next]);
+        next = list->next[next];
+        newdata[++i] = list->data[next];
+    } while(next);
 
     oldsize = i;
 
-    q->next = (int*)realloc(q->next, q->size * sizeof(int));
-    q->prev = (int*)realloc(q->prev, q->size * sizeof(int));
+    list->next = (int*)realloc(list->next, newsize * sizeof(int));
+    list->prev = (int*)realloc(list->prev, newsize * sizeof(int));
 
-    q->Head = 1;
+    list->Head = 1;
 
     for(i = 1; i < oldsize; i++) {
-        q->next[i] = i + 1;
-        q->prev[i] = i - 1;
+        list->next[i] = i + 1;
+        list->prev[i] = i - 1;
     }
 
-    q->next[i] = 0;
-    q->Tail = i;
-    q->free = oldsize;
+    list->next[--i] = 0;
+    list->Tail = i;
+    list->free = oldsize;
 
     for(i = oldsize; i < newsize; i++) {
         newdata[i] = POISON;
-        q->next[i] = i + 1;
-        q->prev[i] = -1;
+        list->next[i] = i + 1;
+        list->prev[i] = -1;
     }
 
-    q->next[i] = 0;
+    list->next[i - 1] = 0;
 
-    q->size = newsize;
-    q->happy = 1;
-    q->data = newdata;
+    list->size = newsize;
+    list->happy = 1;
+    list->data = newdata;
 
     RETURN;
 }

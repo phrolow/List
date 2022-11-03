@@ -18,6 +18,7 @@ void ListDump_(list *list, const char *func, const char *file, size_t line) {
 void ListGraphDump(list *list) {
     FILE *fp = NULL;
     char *cmdbuf = NULL;
+    const char *color = NULL;
     int i = 0;
 
     fp = fopen(DOTPATH, "w");
@@ -26,17 +27,27 @@ void ListGraphDump(list *list) {
 
     fprintf(fp, "\tnode [color=black, shape=box, style=\"filled\"];\n");
     fprintf(fp, "\trankdir=LR;\n");
-    fprintf(fp, "\thead [fillcolor=\"#42AAFF\",     label=\"Head = %d\"];\n", list->Head);
-    fprintf(fp, "\ttail  [fillcolor=\"#42AAFF\",     label=\"Tail = %d\"];\n", list->Tail);
-    fprintf(fp, "\tfree  [fillcolor=\"#42AAFF\",     label=\"free = %d\"];\n", list->free);
-    fprintf(fp, "\tsorted [fillcolor=\"#E34234\",    label=\"happy = %d\"];\n", list->happy);
-    fprintf(fp, "\tsize   [fillcolor=\"#E34234\",    label=\"size = %llu\"];\n", list->size);
+    fprintf(fp, "\thead [fillcolor=\"%s\",     label=\"Head = %d\"];\n", COLOR_HTF, list->Head);
+    fprintf(fp, "\ttail  [fillcolor=\"%s\",     label=\"Tail = %d\"];\n", COLOR_HTF, list->Tail);
+    fprintf(fp, "\tfree  [fillcolor=\"%s\",     label=\"free = %d\"];\n", COLOR_HTF, list->free);
+    fprintf(fp, "\tsorted [fillcolor=\"%s\",    label=\"happy = %d\"];\n", COLOR_PARAM, list->happy);
+    fprintf(fp, "\tsize   [fillcolor=\"%s\",    label=\"size = %llu\"];\n", COLOR_PARAM, list->size);
     fprintf(fp, "\tnode [color=black, shape=record, style=\"filled\"];\n\n");
 
     fprintf(fp, "\tedge [style=invis, constraint=true];\n");
 
     for(i = 0; i < list->size; i++) {
-        fprintf(fp, "\tnode%d [fillcolor=\"#5035DE\",label=\" %d | { <p> %d | %d | <n> %d}\"];\n", i, i, list->prev[i], list->data[i], list->next[i]);
+        if(!i) {
+            color = COLOR_ZERO_NODE;
+        }
+        else if(list->prev[i] == -1) {
+            color = COLOR_FREE_NODE;
+        }
+        else {
+            color = COLOR_NODE;
+        }
+
+        fprintf(fp, "\tnode%d [fillcolor=\"%s\",label=\" %d | { <p> %d | %d | <n> %d}\"];\n", i, color, i, list->prev[i], list->data[i], list->next[i]);
         if(i)
             fprintf(fp, "\tnode%d->node%d;\n", i, i - 1);
     }
@@ -45,11 +56,9 @@ void ListGraphDump(list *list) {
 
     fprintf(fp, "\tedge [style=solid, constraint=false];\n");
 
-    do {
+    for(int i = 0; i < list->size; i++) {
         fprintf(fp, "\tnode%d->node%d\n", i, list->next[i]);
-
-        i = list->next[i];
-    } while(list->next[i]);
+    }
 
     fprintf(fp, "\tedge [style=bold, constraint=false];\n");
     fprintf(fp, "\thead->node%d;\n", list->Head);
@@ -77,25 +86,13 @@ void ListGraphDump(list *list) {
     return;
 }
 
-int ListCheck_(list *list, const char* func, const char* file, size_t line) {
-    int err = ALL_RIGHT;
-
-    err |= CHECK(list->data, NULL_DATA);
-
-    err |= CHECK(list->size < BIG_SIZE && list->size > 0, BAD_SIZE);
-
-    perror_(err, file, func, line);
-
-    return err;
-}
-
 void CleanLogs() {
     fclose(fopen(HTMLPATH, "w"));
     fclose(fopen(DOTPATH, "w"));
     fclose(fopen(PNGPATH, "wb"));
 }
 
-void perror_(int err, const char* file, const char* func, size_t line) {
+void perror_(err_t err, const char* file, const char* func, size_t line) {
     FILE* fp =  NULL;
     char *bin = NULL;
 

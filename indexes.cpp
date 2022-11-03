@@ -4,7 +4,7 @@ int physindex(list *list, int logindex) {
     ASSERT_OK(list);
 
     if(list->happy)
-        return logindex + gethead(list);
+        return logindex + (gethead(list) - 1);
 
     int pi = 0;
 
@@ -18,7 +18,7 @@ int physindex(list *list, int logindex) {
 int getnext(list *list, int physindex) {
     ASSERT_OK(list);
 
-    if(!physindex || getprev(list, physindex) == -1)
+    if(physindex < 1 || physindex >= list->size)
         return -1;
 
     return list->next[physindex];
@@ -27,7 +27,7 @@ int getnext(list *list, int physindex) {
 int getprev(list *list, int physindex) {
     ASSERT_OK(list);
 
-    if(physindex == 0 || isfree(list, physindex))
+    if(physindex < 1 || physindex >= list->size)
         return -1;
 
     return list->prev[physindex];
@@ -53,8 +53,9 @@ int putfree(list *list) {
 
     int free = 0;
 
-    if(getnext(list, list->free) == 0)
+    if(getnext(list, getfree(list)) == 0) {
         resize(list, list->size * 2);
+    }
 
     free = getfree(list);
 
