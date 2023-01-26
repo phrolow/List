@@ -1,4 +1,4 @@
-#include "list.h"
+#include "../list.h"
 
 void ListHeadInsert(list *list, elem_t a) {
     ASSERT_OK(list);

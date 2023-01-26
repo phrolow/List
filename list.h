@@ -65,8 +65,6 @@ const char* const   COLOR_ZERO_NODE = "#4682B4";
 const char* const   COLOR_HTF = "#FFDAB9";
 const char* const   COLOR_PARAM = "#FFC0CB";
 
-extern int NGDUMP;
-
 void add(list *q, elem_t a);
 
 elem_t get(list *q);
@@ -135,6 +133,9 @@ void ListInit(list *list);
 
 void perror_(int err, const char* file, const char* func, size_t line);
 
-void CleanLogs();
+void CloseLogs();
+
+extern FILE *DOTFILE,
+            *HTML;
 
 #endif

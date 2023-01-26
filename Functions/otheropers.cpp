@@ -1,4 +1,4 @@
-#include "list.h"
+#include "../list.h"
 
 void ListDelete(list *list, int logindex) {
     ASSERT_OK(list);

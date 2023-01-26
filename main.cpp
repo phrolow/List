@@ -1,11 +1,16 @@
 #include "list.h"
 
-int NGDUMP;
+FILE    *DOTFILE = NULL,
+        *HTML = NULL;
 
 int main(int argc, char *argv[]) {
-    CleanLogs();
-    NGDUMP = 0;
+    atexit( CloseLogs );
+
+    DOTFILE = fopen(DOTPATH, "w");
+    HTML = fopen(HTMLPATH, "w");
+
     list q0 = newList();
+
     ListTailInsert(&q0, 'A');
     ListTailInsert(&q0, 'B');
     ListTailInsert(&q0, 'C');
@@ -15,6 +20,8 @@ int main(int argc, char *argv[]) {
     ListDelete(&q0, 1);
     ListInsertAfter(&q0, 'G', 1);
     ListPhInsertBefore(&q0, 'G', 1);
+
     ListGraphDump(&q0);
+
     ListDtor(&q0);
 }

@@ -1,4 +1,4 @@
-#include "list.h"
+#include "../list.h"
 
 int physindex(list *list, int logindex) {
     ASSERT_OK(list);

@@ -1,4 +1,4 @@
-#include "list.h"
+#include "../list.h"
 
 err_t ListCheck_(list *list, const char* func, const char* file, size_t line) {
     err_t err = ALL_RIGHT;

@@ -1,4 +1,4 @@
-#include "list.h"
+#include "../list.h"
 
 list newList_(const char* func, const char* file, size_t line) {
     int i = 0;

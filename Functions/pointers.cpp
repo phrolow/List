@@ -1,4 +1,4 @@
-#include "list.h"
+#include "../list.h"
 
 elem_t *ListFirst(list *list) {
     ASSERT_OK(list);
