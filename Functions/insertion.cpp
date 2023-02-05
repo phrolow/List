@@ -28,16 +28,12 @@ void ListTailInsert(list *list, elem_t a) {
     tail = gettail(list);
     free = putfree(list);
 
-    printf("%d %d %d\n", list->prev[tail], tail, list->next[tail]);
-
     list->next[tail] = free;
     list->prev[free] = tail;
     list->next[free] = 0;
     list->data[free] = a;
 
     list->Tail = free;
-
-    printf("%d %d %d\n", list->prev[tail], tail, list->next[tail]);
 
     RETURN;
 }

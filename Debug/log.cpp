@@ -61,7 +61,6 @@ void ListGraphDump(list *list) {
     fprintf(fp, "\tedge [style=bold, constraint=false];\n");
     fprintf(fp, "\thead->node%d;\n", list->Head);
     fprintf(fp, "\ttail->node%d;\n", list->Tail);
-    fprintf(fp, "\tfree->node%d;\n", list->free);
     fprintf(fp, "}");
     fclose(fp);
     cmdbuf = (char*)calloc(0x200, sizeof(char));

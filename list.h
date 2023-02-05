@@ -71,7 +71,7 @@ void add(list *q, elem_t a);
 
 elem_t get(list *q);
 
-void Resize(list *list, size_t newsize);
+void Resize(list *list, size_t new_size);
 
 void del(list *q, int num);
 

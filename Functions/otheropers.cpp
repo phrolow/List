@@ -73,48 +73,50 @@ void ListInit(list *list) {
     RETURN;
 }
 
-void Resize(list *list, size_t newsize) {
+void Resize(list *list, size_t new_size) {
     ASSERT_OK(list);
 
-    elem_t *newdata = NULL;
-    int i = 0,
-        next = 0,
-        oldsize = 0;
+    elem_t *new_data = (elem_t *) calloc(new_size, sizeof(elem_t));
 
-    newdata = (elem_t*)calloc(newsize, sizeof(elem_t));
-
-    newdata[0] = POISON;
+    int next = 0,
+            num_filled = 0,
+            i = 0;
 
     do {
+        new_data[num_filled++] = list->data[next];
+
         next = list->next[next];
-        newdata[++oldsize] = list->data[next];
-    } while(next);
+    } while (next);
 
-    list->next = (int*)realloc(list->next, newsize * sizeof(int));
-    list->prev = (int*)realloc(list->prev, newsize * sizeof(int));
+    i = num_filled;
 
-    list->Head = 1;
+    while (i < new_size) {
+        new_data[i++] = POISON;
+    }
 
-    for(i = 1; i < oldsize; i++) {
+    for(i = 0; i < num_filled; i++) {
         list->next[i] = i + 1;
         list->prev[i] = i - 1;
     }
 
-    list->next[i] = 0;
-    list->Tail = i - 1;
-    list->free = oldsize;
+    list->next[i - 1] = 0;
+    list->prev[0] = i - 1;
 
-    for(i = oldsize; i < newsize; i++) {
-        newdata[i] = POISON;
+    for(; i < new_size; i++) {
         list->next[i] = i + 1;
         list->prev[i] = -1;
     }
 
-    list->next[i - 1] = 0;
+    i--;
 
-    list->size = newsize;
+    list->next[i] = 0;
+    list->Tail = num_filled - 1;
+
+    free(list->data);
+    list->data = new_data;
+
+    list->size = new_size;
     list->happy = 1;
-    list->data = newdata;
 
     RETURN;
 }
@@ -163,8 +165,6 @@ void Linearize(list *list) {
     list->data = new_data;
 
     list->happy = 1;
-
-    printf("%d\n", list->Head);
 
     RETURN;
 }
