@@ -23,4 +23,3 @@ elem_t *ListPrev(list *list, int physindex) {
 
     return list->data + getprev(list, physindex);
 }
-

@@ -32,7 +32,7 @@ typedef char elem_t;
 typedef int err_t;
 typedef struct ListInfo {
     const char  *func,
-                *file;
+            *file;
     size_t line;
 } listinfo;
 typedef struct List {
@@ -41,7 +41,7 @@ typedef struct List {
             *prev;
     size_t size;
     int happy,
-        free;
+            free;
     listinfo info;
 } list;
 
@@ -52,7 +52,7 @@ enum Error {
 };
 
 const size_t        BIG_SIZE = 0x100000,
-                    DEFAULTSIZE = 4;
+        DEFAULTSIZE = 4;
 const elem_t        POISON = 0;
 const char* const   DOTPATH = "graphdump";
 const char* const   HTMLPATH = "log.html";
@@ -64,6 +64,8 @@ const char* const   COLOR_FREE_NODE = "#808000";
 const char* const   COLOR_ZERO_NODE = "#4682B4";
 const char* const   COLOR_HTF = "#FFDAB9";
 const char* const   COLOR_PARAM = "#FFC0CB";
+
+extern int NGDUMP;
 
 void add(list *q, elem_t a);
 
@@ -131,11 +133,10 @@ int ListPhIndexFirst(list *list, elem_t a);
 
 void ListInit(list *list);
 
+void linearize(list *list);
+
 void perror_(int err, const char* file, const char* func, size_t line);
 
-void CloseLogs();
-
-extern FILE *DOTFILE,
-            *HTML;
+void CleanLogs();
 
 #endif

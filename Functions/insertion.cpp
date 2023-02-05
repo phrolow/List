@@ -28,12 +28,16 @@ void ListTailInsert(list *list, elem_t a) {
     tail = gettail(list);
     free = putfree(list);
 
+    printf("%d %d %d\n", list->prev[tail], tail, list->next[tail]);
+
     list->next[tail] = free;
     list->prev[free] = tail;
     list->next[free] = 0;
     list->data[free] = a;
 
     list->Tail = free;
+
+    printf("%d %d %d\n", list->prev[tail], tail, list->next[tail]);
 
     RETURN;
 }
@@ -54,7 +58,7 @@ void ListPhInsertAfter(list *list, elem_t a, int physindex) {
     ASSERT_OK(list);
 
     int free = 0,
-        next = 0;
+            next = 0;
 
     free = putfree(list);
     next = getnext(list, physindex);
@@ -75,7 +79,7 @@ void ListPhInsertBefore(list *list, elem_t a, int physindex) {
     ASSERT_OK(list);
 
     int free = 0,
-        prev = 0;
+            prev = 0;
 
     free = putfree(list);
     prev = getprev(list, physindex);

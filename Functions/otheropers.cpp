@@ -10,7 +10,7 @@ void ListPhDelete(list *list, int physindex) {
     ASSERT_OK(list);
 
     int next = 0,
-        prev = 0;
+            prev = 0;
 
     next = getnext(list, physindex);
     prev = getprev(list, physindex);
@@ -87,10 +87,8 @@ void resize(list *list, size_t newsize) {
 
     do {
         next = list->next[next];
-        newdata[++i] = list->data[next];
+        newdata[++oldsize] = list->data[next];
     } while(next);
-
-    oldsize = i;
 
     list->next = (int*)realloc(list->next, newsize * sizeof(int));
     list->prev = (int*)realloc(list->prev, newsize * sizeof(int));
@@ -102,8 +100,8 @@ void resize(list *list, size_t newsize) {
         list->prev[i] = i - 1;
     }
 
-    list->next[--i] = 0;
-    list->Tail = i;
+    list->next[i] = 0;
+    list->Tail = i - 1;
     list->free = oldsize;
 
     for(i = oldsize; i < newsize; i++) {
@@ -117,6 +115,92 @@ void resize(list *list, size_t newsize) {
     list->size = newsize;
     list->happy = 1;
     list->data = newdata;
+
+    RETURN;
+}
+
+void linearize(list *list) {
+    ASSERT_OK(list);
+
+//    elem_t *newdata = NULL;
+//
+//    int i = 0,
+//        next = 0,
+//        used = 0;
+//
+//    newdata = (elem_t*)calloc(list->size, sizeof(elem_t));
+//
+//    newdata[0] = POISON;
+//
+//    do {
+//        next = list->next[next];
+//        newdata[++used] = list->data[next];
+//    } while(next);
+//
+//    list->Head = 1;
+//
+//    for(i = 1; i < used; i++) {
+//        list->next[i] = i + 1;
+//        list->prev[i] = i - 1;
+//    }
+//
+//    list->next[--i] = 0;
+//    list->Tail = i;
+//    list->free = used;
+//
+//    for(i = used; i < list->size; i++) {
+//        newdata[i] = POISON;
+//        list->next[i] = i + 1;
+//        list->prev[i] = -1;
+//    }
+//
+//    list->next[i - 1] = 0;
+//
+//    list->happy = 1;
+//    list->data = newdata;
+
+    elem_t *newdata = (elem_t *) calloc(list->size, sizeof(elem_t));
+
+    int next = 0,
+        num_filled = 0,
+        head = gethead(list),
+        i = 0,
+        size = list->size;
+
+    do {
+        newdata[num_filled++] = list->data[next];
+
+        next = list->next[next];
+    } while (next);
+
+    i = num_filled;
+
+    while (i < size) {
+        newdata[i++] = POISON;
+    }
+
+    for(i = 0; i < num_filled; i++) {
+        list->next[i] = i + 1;
+        list->prev[i] = i - 1;
+    }
+
+    list->next[i - 1] = 0;
+    list->prev[0] = i - 1;
+
+    for(; i < size; i++) {
+        list->next[i] = i + 1;
+        list->prev[i] = -1;
+    }
+
+    i--;
+
+    list->next[i] = 0;
+    list->Tail = num_filled - 1;
+
+    free(list->data);
+    list->data = newdata;
+
+    list->happy = 1;
 
     RETURN;
 }
