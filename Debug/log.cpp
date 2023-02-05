@@ -22,7 +22,6 @@ void ListGraphDump(list *list) {
     int i = 0;
 
     fp = fopen(DOTPATH, "w");
-
     fprintf(fp, "digraph structs {\n");
 
     fprintf(fp, "\tnode [color=black, shape=box, style=\"filled\"];\n");
@@ -47,11 +46,10 @@ void ListGraphDump(list *list) {
             color = COLOR_NODE;
         }
 
-        fprintf(fp, "\tnode%d [fillcolor=\"%s\",label=\" %d | { <p> PREV %d | %c | <n> NEXT %d}\"];\n", i, color, i, list->prev[i], list->data[i], list->next[i]);
+        fprintf(fp, "\tnode%d [fillcolor=\"%s\",label=\" %d | { <p> %d | %d | <n> %d}\"];\n", i, color, i, list->prev[i], list->data[i], list->next[i]);
         if(i)
             fprintf(fp, "\tnode%d->node%d;\n", i, i - 1);
     }
-
     i = list->Head;
 
     fprintf(fp, "\tedge [style=solid, constraint=false];\n");
@@ -65,22 +63,14 @@ void ListGraphDump(list *list) {
     fprintf(fp, "\ttail->node%d;\n", list->Tail);
     fprintf(fp, "\tfree->node%d;\n", list->free);
     fprintf(fp, "}");
-
     fclose(fp);
-
     cmdbuf = (char*)calloc(0x200, sizeof(char));
     sprintf(cmdbuf, "dot %s -T png -o graph%d.png", DOTPATH, NGDUMP);
-
     system(cmdbuf);
-
     free(cmdbuf);
-
     fp = fopen(HTMLPATH, "a");
-
     fprintf(fp, "<img src=\"graph%d.png\">\n", NGDUMP);
-
     fclose(fp);
-
     NGDUMP++;
 
     return;

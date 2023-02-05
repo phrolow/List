@@ -55,7 +55,7 @@ void ListInit(list *list) {
     size_t i = 0;
 
     list->data[0] = POISON;
-    list->Head = 1;
+    list->Head = 0;
     list->Tail = 0;
 
     for(i = 1; i < list->size; i++) {
@@ -73,7 +73,7 @@ void ListInit(list *list) {
     RETURN;
 }
 
-void resize(list *list, size_t newsize) {
+void Resize(list *list, size_t newsize) {
     ASSERT_OK(list);
 
     elem_t *newdata = NULL;
@@ -119,56 +119,18 @@ void resize(list *list, size_t newsize) {
     RETURN;
 }
 
-void linearize(list *list) {
+void Linearize(list *list) {
     ASSERT_OK(list);
 
-//    elem_t *newdata = NULL;
-//
-//    int i = 0,
-//        next = 0,
-//        used = 0;
-//
-//    newdata = (elem_t*)calloc(list->size, sizeof(elem_t));
-//
-//    newdata[0] = POISON;
-//
-//    do {
-//        next = list->next[next];
-//        newdata[++used] = list->data[next];
-//    } while(next);
-//
-//    list->Head = 1;
-//
-//    for(i = 1; i < used; i++) {
-//        list->next[i] = i + 1;
-//        list->prev[i] = i - 1;
-//    }
-//
-//    list->next[--i] = 0;
-//    list->Tail = i;
-//    list->free = used;
-//
-//    for(i = used; i < list->size; i++) {
-//        newdata[i] = POISON;
-//        list->next[i] = i + 1;
-//        list->prev[i] = -1;
-//    }
-//
-//    list->next[i - 1] = 0;
-//
-//    list->happy = 1;
-//    list->data = newdata;
-
-    elem_t *newdata = (elem_t *) calloc(list->size, sizeof(elem_t));
+    elem_t *new_data = (elem_t *) calloc(list->size, sizeof(elem_t));
 
     int next = 0,
         num_filled = 0,
-        head = gethead(list),
         i = 0,
         size = list->size;
 
     do {
-        newdata[num_filled++] = list->data[next];
+        new_data[num_filled++] = list->data[next];
 
         next = list->next[next];
     } while (next);
@@ -176,7 +138,7 @@ void linearize(list *list) {
     i = num_filled;
 
     while (i < size) {
-        newdata[i++] = POISON;
+        new_data[i++] = POISON;
     }
 
     for(i = 0; i < num_filled; i++) {
@@ -198,9 +160,11 @@ void linearize(list *list) {
     list->Tail = num_filled - 1;
 
     free(list->data);
-    list->data = newdata;
+    list->data = new_data;
 
     list->happy = 1;
+
+    printf("%d\n", list->Head);
 
     RETURN;
 }

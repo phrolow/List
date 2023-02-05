@@ -71,7 +71,7 @@ void add(list *q, elem_t a);
 
 elem_t get(list *q);
 
-void resize(list *list, size_t newSize);
+void Resize(list *list, size_t newsize);
 
 void del(list *q, int num);
 
@@ -133,7 +133,7 @@ int ListPhIndexFirst(list *list, elem_t a);
 
 void ListInit(list *list);
 
-void linearize(list *list);
+void Linearize(list *list);
 
 void perror_(int err, const char* file, const char* func, size_t line);
 

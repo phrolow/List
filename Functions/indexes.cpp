@@ -54,7 +54,7 @@ int putfree(list *list) {
     int free = 0;
 
     if(getnext(list, getfree(list)) == 0) {
-        resize(list, list->size * 2);
+        Resize(list, list->size * 2);
     }
 
     free = getfree(list);
